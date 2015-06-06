@@ -1,8 +1,22 @@
 # HelloPhoenix
 
-To start your new Phoenix application:
+### Requirements
 
-1. Install dependencies with `mix deps.get`
-2. Start Phoenix endpoint with `mix phoenix.server`
+Install `azk`, instructions: 
+    http://docs.azk.io/en/installation/index.html
 
-Now you can visit `localhost:4000` from your browser.
+### Start
+
+Run the application with:
+
+  ```bash
+  $ azk start --open; azk logs --tail
+  ```
+
+### Logs
+
+Run:
+
+  ```bash
+  $ azk logs --follow
+  ```
