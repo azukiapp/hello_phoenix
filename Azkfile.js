@@ -72,4 +72,26 @@ systems({
       DATABASE_URL: "ecto+postgres://#{envs.POSTGRES_USER}:#{envs.POSTGRES_PASS}@#{net.host}:#{net.port.data}/${envs.POSTGRES_DB}?size=10",
     },
   },
+  // TESTS Systems
+  test: {
+    extends: 'hello-phoenix',
+    depends: ['postgres-test'],
+    command: 'mix test; exit',
+    wait: false,
+    scalable: { limit: 0, default: 1 },
+  },
+  'postgres-test': {
+    extends: 'postgres',
+    envs: {
+      POSTGRES_USER: "azk",
+      POSTGRES_PASS: "azk",
+      POSTGRES_DB: "#{manifest.dir}_test",
+    },
+    scalable: { limit: 0, default: 1 },
+    export_envs: {
+      // check this gist to configure your database
+      // https://github.com/azukiapp/hello_phoenix/blob/master/config%2Fconfig.exs#L22
+      DATABASE_URL: "ecto+postgres://#{envs.POSTGRES_USER}:#{envs.POSTGRES_PASS}@#{net.host}:#{net.port.data}/${envs.POSTGRES_DB}?size=10",
+    },
+  }
 });
