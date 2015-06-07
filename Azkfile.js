@@ -4,7 +4,7 @@
 
 // Adds the systems that shape your system
 systems({
-  "hello-phoneix": {
+  "hello-phoenix": {
     // Dependent systems
     depends: [],
     // More images:  http://images.azk.io
