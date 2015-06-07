@@ -45,7 +45,8 @@
           </div>
           <div class="col-md-6 text-right clearfix">
             <ul class="nav nav-pills pull-right header-link">
-              <li><a href="/">Home</a></li>
+              <li><a href="<%= page_path(@conn, :index) %>">Home</a></li>
+              <li><a href="<%= user_path(@conn, :index) %>">Users</a></li>
             </ul>
           </div>
         </div>
