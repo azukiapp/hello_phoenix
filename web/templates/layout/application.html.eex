@@ -40,12 +40,12 @@
     <div class="container" role="main">
       <div class="header clearfix">
         <div class="row">
-          <div class="col-md-8" style="display-block">
+          <div class="col-md-6 clearfix ">
             <img class="logo_phoenix img-responsive" src="/images/phoenix.png" alt="">
           </div>
-          <div class="col-md-4 text-right clearfix">
-            <ul class="nav nav-pills pull-right getting-start-link">
-              <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+          <div class="col-md-6 text-right clearfix">
+            <ul class="nav nav-pills pull-right header-link">
+              <li><a href="/">Home</a></li>
             </ul>
           </div>
         </div>
