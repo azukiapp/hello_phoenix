@@ -12,13 +12,46 @@
   </head>
 
   <body>
+    <div class="sidebar">
+      <img class="logo" width="122" height="126" src="/images/azuki_logo.png" />
+      <ul class="social-medias">
+        <li>
+          <a href="http://azk.io" style="color: #000000;" target="_blank">
+            <span class="icon icon--circle icon--link" aria-hidden="true"></span>
+          </a>
+        </li>
+        <li>
+          <a href="http://github.com/azukiapp/azk" style="color: #000000;" target="_blank">
+           <span class="icon icon--circle icon--github" aria-hidden="true"></span>
+          </a>
+        </li>
+        <li>
+          <a href="http://azk.io" style="color: #000000;" target="_blank">
+           <span class="icon icon--circle icon--facebook" aria-hidden="true"></span>
+          </a>
+        </li>
+        <li>
+          <a href="http://twitter.com/azukiapp" target="_blank" style="color: #000000;">
+           <span class="icon icon--circle icon--twitter" aria-hidden="true"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
     <div class="container" role="main">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-        </ul>
-        <span class="logo"></span>
+      <div class="header clearfix">
+        <div class="row">
+          <div class="col-md-8" style="display-block">
+            <img class="logo_phoenix img-responsive" src="/images/phoenix.png" alt="">
+          </div>
+          <div class="col-md-4 text-right clearfix">
+            <ul class="nav nav-pills pull-right getting-start-link">
+              <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
+
+      <div class="h-line"> &nbsp; </div>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
