@@ -33,5 +33,5 @@ Stop log and test system:
 
 ```bash
 # Press `Ctrl+C` to end logs
-azk stop test
+azk stop test,postgres-test
 ```
