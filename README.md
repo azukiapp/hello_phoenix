@@ -5,6 +5,15 @@
 Install `azk`, instructions: 
     http://docs.azk.io/en/installation/index.html
 
+### Get Project
+
+Run in your terminal:
+
+```bash
+$ git clone https://github.com/azukiapp/hello_phoenix
+$ cd hello_phoenix
+```
+
 ### Start
 
 Run the application with:

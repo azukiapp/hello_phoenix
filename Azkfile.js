@@ -23,13 +23,13 @@ systems({
     command: "mix phoenix.server --no-deps-check",
     wait: {"retry": 20, "timeout": 1000},
     mounts: {
-      "/azk/#{manifest.dir}"             : sync("."),
-      // Dependêncies
+      "/azk/#{manifest.dir}"                : sync("."),
+      // Elixir
+      "/root/.hex"                          : path(env.HOME + '/.hex'),
       "/azk/#{manifest.dir}/deps"           : persistent("#{manifest.dir}/deps"),
-      "/azk/#{manifest.dir}/.hex"           : persistent("#{manifest.dir}/.hex"),
-      "/azk/#{manifest.dir}/node_modules"   : persistent("#{manifest.dir}/node_modules"),
-      // Builds
       "/azk/#{manifest.dir}/_build"         : persistent("#{manifest.dir}/_build"),
+      // Phoenix
+      "/azk/#{manifest.dir}/node_modules"   : persistent("#{manifest.dir}/node_modules"),
       "/azk/#{manifest.dir}/priv/static/js" : persistent("#{manifest.dir}/priv/static/js"),
       "/azk/#{manifest.dir}/priv/static/css": persistent("#{manifest.dir}/priv/static/css"),
     },
@@ -41,8 +41,7 @@ systems({
       http: "4000",
     },
     envs: {
-      // set instances variables
-      HEX_HOME: "/azk/#{manifest.dir}/.hex"
+      MIX_ENV: "dev"
     },
   },
   postgres: {
@@ -68,7 +67,7 @@ systems({
     },
     export_envs: {
       // check this gist to configure your database
-      // https://github.com/azukiapp/hello_phoenix/blob/master/config%2Fconfig.exs#L22
+      // https://github.com/azukiapp/hello_phoenix/blob/master/config/config.exs#L22
       DATABASE_URL: "ecto+postgres://#{envs.POSTGRES_USER}:#{envs.POSTGRES_PASS}@#{net.host}:#{net.port.data}/${envs.POSTGRES_DB}?size=10",
     },
   },
@@ -79,6 +78,9 @@ systems({
     command: 'mix test; exit',
     wait: false,
     scalable: { limit: 0, default: 1 },
+    envs: {
+      MIX_ENV: "test"
+    },
   },
   'postgres-test': {
     extends: 'postgres',
@@ -90,7 +92,7 @@ systems({
     scalable: { limit: 0, default: 1 },
     export_envs: {
       // check this gist to configure your database
-      // https://github.com/azukiapp/hello_phoenix/blob/master/config%2Fconfig.exs#L22
+      // https://github.com/azukiapp/hello_phoenix/blob/master/config/config.exs#L22
       DATABASE_URL: "ecto+postgres://#{envs.POSTGRES_USER}:#{envs.POSTGRES_PASS}@#{net.host}:#{net.port.data}/${envs.POSTGRES_DB}?size=10",
     },
   }
